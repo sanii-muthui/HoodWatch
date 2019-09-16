@@ -1,0 +1,49 @@
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" 
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<nav style="background-color:black" class="sticky-top navbar navbar-expand-lg navbar-dark ">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+        aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a id="icon" class="navbar-brand" href="/">HoodWatch</a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="{% url 'location'%}">location</a>
+
+            </li> -->
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+         <a class="nav-link" href="{% url 'profile' %}" ><i class="fa fa-user-circle" style="font-size: 20px; color: aliceblue">&nbsp;{{request.user.username}}</i></a>
+        </li>
+    </ul>
+                <h5 style="color:whitesmoke" class="nav-item dropdown">
+                    <a style="color:whitesmoke" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu            
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/admin/">Admin</a>
+                        <a class="dropdown-item" href="/accounts/password/change">Change password</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/logout">Log out</a>
+                    </div>
+                </h5>
+        <img style="border-radius: 50% ; padding: 0.15rem;  background: linear-gradient(to right bottom);"
+                    class=" img-circle"   src="{{request.user.profile.photo.url}}" alt=""
+                    width="70px" height="70px">
+                </section>
+                <br>
+
+            <form id="search" role="search" action="{% url 'search_results' %}" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" name="business" type="search" placeholder="search business..."aria-label="Search">
+            </form>
+        {% else%}
+        <a href="/accounts/login">
+            <button id="btn" class="btn btn-danger">Log in</button>
+        </a>
+
+        {% endif%}
+    </div>
+</nav>

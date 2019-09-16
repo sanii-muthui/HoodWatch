@@ -1,0 +1,112 @@
+{%extends 'base.html'%}
+{% load staticfiles %}
+{% load bootstrap4 %}
+{% load static%}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" 
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css">
+</head>
+{% block content %}
+{{block.super}}
+
+<body style="overflow-x: hidden">
+<div class="main-content">
+    <h2>NeighbourHood Watch</h2>
+    <h6 style="text-align:center; color: blanchedalmond">{{date|date:"l d F Y"}}</h6>
+    <p> Life  in  the  neighbourhood  is  rather  calm  because you  don’t  really  know  your neighbours at first. 
+        Sometimes you speak with them and it gets easier.  The  ambiance  of  the  street is breathtaking.Getting along with the neighbours makes everyone happy.
+        Lots of couple have ctivities everyone can indulge and bring connectivity for both the children and the parents within.In front of the flat there is a park
+        where we all can play. Why not join the Group of happy families!.
+    </p>    
+</div>
+&nbsp;
+<h5 style="color: black;text-align:center;">~Hood GuideLine~</h5>
+<div class="row">
+<div class="col-md-4"></div>
+<div class="col-md-4">
+        <div class="card" >
+            <h5 class="card-header">Hoods</h5>
+            <div class="card-body">
+                <h5 class="card-title">New Experience</h5>
+                <p style="color: black" class="card-text">Life  in  the  neighbourhood  is  rather  calm  because you  don’t  really  know  your neighbours at first. 
+                    Sometimes you speak with them and it gets easier.  The  ambiance  of  the  street is breathtaking.Getting along with the neighbours makes everyone happy.
+                    Lots of couple have ctivities everyone can indulge and bring connectivity for both the children and the parents within.In front of the flat there is a park
+                    where we all can play. Why not join the Group of happy families!.</p>
+                    <a href="{% url 'new-hood'%}">
+                        <button class="btn btn-primary">Create a Hood</button>
+                    </a>
+            </div>
+        </div>
+    </div>
+<div class="col-md-4"></div>
+</div>
+&nbsp;
+<h5 style="color: black;text-align:center;">~Current-Hoods~</h5>
+<div class="container">
+        <a href="{% url 'new-hood'%}">
+            <button class="btn btn-outline-light btn-sm">Create a Hood</button>
+        </a>
+        <div class="row">
+            {% for hood in hoods%}
+            <div class="col-md-4 col-lg-4 col-sm-6 ">
+                <div class="card">
+                    <div style="text-align:center; color:black" class="card-header">
+                        <h5>{{ hood.name}}</h5>
+                    </div>
+                    <div style="text-align:center; " class="card-image">
+    
+                        <img class="img-responsive" src="{{hood.image.url}}" alt="" height="200px" width="300px">
+    
+                    </div>
+                    <div class="card-footer">
+                        <a href="/hoods/{{hood.id}}">
+                            <button class="btn btn-outline-primary  btn-md btn-block">View NeighbourHood</button>
+                        </a>&nbsp;
+                        <a data-toggle='modal' data-target='#{{hood.id}}'>
+                            <button class="btn btn-outline-primary  btn-md btn-block">View-Details</button>
+                        </a>
+                        <p class="form-control">Review:{{hood.content}}</p>
+                        <p class="form-control">Average Rating:{{hood.average_review}}</p>
+                    </div>
+                </div>
+                <br>
+                <br>
+            </div>
+             <!-- modal update form -->
+             <div class="modal" id="{{hood.id}}" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Rate</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                                <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><i class="fa fa-home"></i> Hoodname:{{hood.name}}</li>
+                                <li class="list-group-item"><i class="fa fa-clipboard"></i> Description:{{hood.description}}</li>
+                                <li class="list-group-item"><i class="fa fa-users"></i> Residences:{{hood.occupants}}</li>
+                        <!-- <form action="" method="post" enctype="multipart/form-data">
+                                {%csrf_token%}
+    
+                                {% bootstrap_form form%}
+                                <input type="submit" class="btn btn-warning btn-sm" value="Submit">
+                        </form>      -->
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+    
+            {% endfor%}
+        </div>
+    </div>
+{% endblock %}
+</body>

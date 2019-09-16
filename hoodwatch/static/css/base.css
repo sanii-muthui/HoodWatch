@@ -1,0 +1,25 @@
+.main-content{
+    background-image: url('../css/img/316867.jpg');
+    height: 80vh;
+    margin: 0 auto;
+    padding: 7%;
+}
+.main-content h2,p{
+    font-family: baloo;
+    font-size: 45;
+    color: #fff;
+    text-align: center;
+}
+.main-content a{
+    background: #262626;
+    text-decoration: none;
+    display: inline-block;
+    padding: 15px 20px;
+    text-transform: uppercase;
+    margin-top: 30px;
+    color: #fff;    
+}
+#sanii{
+    background-color: chocolate;
+    /* background-image: url('../css/img/316867.jpg'); */
+}

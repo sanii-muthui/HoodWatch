@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% load staticfiles %}
+
+{% block content %}
+{{block.super}}
+<link rel="stylesheet" href="../static/css/base.css">
+
+<div class="container" style="margin-top: 90px;">
+    <div class="row">
+            <div class="col-md-6">
+            <div class="card">
+                <h1 class="card-header">{{request.user.username}}</h1>
+            <div class="card-body">
+                        <img src="{{profile.photo.url}}" alt="Project" class="img-fluid">
+                        <style>
+                            .img{
+                                border-radius: 50%;
+                            }
+                        </style>
+                    <h1>Bio:{{profile.bio}}</h1>
+                    </div>
+                </div>
+                <div class="card-footer">
+                        <button class="btn profile-create-btn"><a href="/edit/profile">Edit Profile</a> </button>
+                </div>
+            </div>
+    </div>
+    <br><br><br>
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-md-6">
+            <div class="card">
+                <img src="{{project.image.url}}"  alt="Project" class="img-fluid">
+            </div>
+        </div>
+        {% endfor%}
+    </div>
+</div>
+{% endblock %}
