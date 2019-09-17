@@ -16,7 +16,6 @@ urlpatterns=[
     url(r'^hoods/new/business/(\d+)$',views.new_business, name='new-business'),
     url(r'^hoods/(\d+)',views.hoods,name='hoods'),
     url(r'^new/hood$', views.new_hood, name='new-hood')
-
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
