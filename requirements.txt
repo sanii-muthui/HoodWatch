@@ -1,3 +1,4 @@
+#updated requirements
 astroid==2.2.5
 beautifulsoup4==4.8.0
 confusable-homoglyphs==3.2.0
