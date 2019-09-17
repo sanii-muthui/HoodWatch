@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from statistics import mean
 
-
 # Create your models here.
 class Profile(models.Model):
     profile = models.OneToOneField(User,on_delete=models.CASCADE, null = True)
