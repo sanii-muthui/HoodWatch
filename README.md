@@ -3,7 +3,8 @@
 ## Project Author
   (Daniel Muthui)
 ## Description
-A web application that will allow users to display their projects and get them voted by their peers.A user can search for other projects and rate and view thier profile details. 
+A web application that will allow users to display their neighbourhoods and get them viewed by their neighnour who either what to join the neighbourhood or 
+review their details .A user can search for other businesses in the hood , comment, post stories and view thier profile details too. 
 ## User Stories
 As a user I would like to:
 
