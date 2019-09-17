@@ -12,7 +12,6 @@ from django.contrib.auth.models import User
 
 
 # Create your views here.
-
 # app view functions
 def index(request):
     date = dt.date.today()
